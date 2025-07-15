@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
+.env/
+venv/
+.virtualenv/
+.migrations/
+
+# Pipenv
+Pipfile.lock  # Optional, depending on your workflow
+
+# Django
+db.sqlite3
+
+# VSCode / IDE settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Environment files
+.env
