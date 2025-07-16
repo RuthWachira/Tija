@@ -23,25 +23,27 @@ In the long term, daily habits over time are used to report on  Goal achievement
 
 ## Installation
 1. **Clone the repo**
-'''bash
+```bash
 git clone https://github.com/RuthWachira/Tija.git 
 cd Tija
-'''
+```
 2. **Setting up of virtual environment**
+```bash
 python -m venv env
 source env/bin/activate  # On Windows: env\Scripts\activate
+```
 3. **Dependencies**
-'''bash
+```bash
 pip install -r requirements.txt
-'''
+```
 4. **Migrations**
-''' bash
-'python manage.py migrate'
-
+```bash
+python manage.py migrate
+```
 5. **Starting the development server**
-'''bash
+```bash
 python manage.py runserver
-'''
+```
 **To get started, visit**: *[local server](http://127.0.0.1:8000/)*
 
 ## License
