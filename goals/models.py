@@ -10,10 +10,10 @@ class Goals(models.Model):
     # to update to dropdown later and hence adjust the field class.
     timeline = models.CharField(max_length=255)
     planned_completion_date = models.DateField(
-        auto_now_add=True)  # to update to a calendar picker
-    # to update to a calendar picker
+        auto_now_add=True)  # to update to a calendar picker widget
     start_date = models.DateField(auto_now_add=True)
+      # to update to a calendar picker widget
     progress_notes = models.CharField
     actual_completion_date = models.DateField(
-        auto_now_add=True)  # to update to a calendar picker
+        auto_now_add=True)  # to update to a calendar picker widget
     lessons_learnt = models.CharField
