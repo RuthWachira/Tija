@@ -1,4 +1,5 @@
 from django.db import models  # preimported by django
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -13,6 +14,7 @@ class Goals(models.Model):
         ("in progress", "In progress"),
         ("completed", "Completed")
     ]
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=255)
     date_created = models.DateField(auto_now_add=True)
     description = models.TextField(default="No description provided")
