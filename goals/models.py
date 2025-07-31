@@ -7,19 +7,28 @@ from django.contrib.auth.models import User
 class Goals(models.Model):
     TIMEFRAME_CHOICES = [
         ("long-term", "Long-term"),
-        ("short-term", "Short-term")
+        ("short-term", "Short-term"),
     ]
     STATUS_CHOICES = [
         ("not started", "Not started"),
         ("in progress", "In progress"),
-        ("completed", "Completed")
+        ("completed", "Completed"),
     ]
+    PRIORITY_CHOICES = [
+        ("urgent, important", "Urgent and important (Immediate action needed)"),
+        ("urgent, not important", "Urgent and  not important (Schedulable)"),
+        ("not urgent, important", "Not urgent but important (Delegatable)"),
+        ("not urgent, not important", "Not urgent and not important (Eliminatable)"),
+
+    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=255)
+    name = models.CharField(unique=True,max_length=255)
     date_created = models.DateField(auto_now_add=True)
     description = models.TextField(default="No description provided")
-    priority = models.CharField(max_length=255)  # i.e urgent and important etc
-    # to update to dropdown later  with choice selection and hence adjust the field class.
+    # i.e urgent and important etc
+    priority = models.CharField(
+        choices=PRIORITY_CHOICES, max_length=255, null=True)
     timeframe = models.CharField(
         choices=TIMEFRAME_CHOICES, max_length=255)
     # i.e long-term or short-term
@@ -31,6 +40,9 @@ class Goals(models.Model):
     completion_date = models.DateField(null=True, blank=True)
     status = models.CharField(
         choices=STATUS_CHOICES, max_length=255)
+
+    def __str__(self):
+        return str(self.name)
 
 
 class Analysis(models.Model):
