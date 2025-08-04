@@ -1,5 +1,5 @@
 from django.db import models  # preimported by django
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User #manually imported by me
 
 # Create your models here.
 
@@ -23,7 +23,7 @@ class Goals(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    name = models.CharField(unique=True,max_length=255)
+    name = models.CharField(unique=True, max_length=255)
     date_created = models.DateField(auto_now_add=True)
     description = models.TextField(default="No description provided")
     # i.e urgent and important etc
@@ -47,7 +47,11 @@ class Goals(models.Model):
 
 class Analysis(models.Model):
     goal = models.ForeignKey(Goals, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100, null=True)
     date_created = models.DateField(auto_now_add=True)
     challenges = models.TextField(default="No challenge indicated")
     lessons = models.TextField(default="No lesson indicated")
     proposed_action = models.TextField(default="No proposed action")
+
+    def __str__(self):
+        return str(self.title)

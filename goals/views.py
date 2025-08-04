@@ -1,5 +1,5 @@
-from django.shortcuts import render  #preimported by django
-from django.http import HttpResponse  #manually imported by me
+from django.shortcuts import render  # preimported by django
+from django.http import HttpResponse  # manually imported by me
 # Create your views here.
 
 
