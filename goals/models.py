@@ -1,10 +1,12 @@
 from django.db import models  # preimported by django
-from django.contrib.auth.models import User #manually imported by me
+from django.contrib.auth.models import User  # manually imported by me
 
 # Create your models here.
 
 
-class Goals(models.Model):
+class Goal(models.Model):
+    class meta:
+        db_table = 'goals'
     TIMEFRAME_CHOICES = [
         ("long-term", "Long-term"),
         ("short-term", "Short-term"),
@@ -45,8 +47,11 @@ class Goals(models.Model):
         return str(self.name)
 
 
-class Analysis(models.Model):
-    goal = models.ForeignKey(Goals, on_delete=models.CASCADE)
+class Review(models.Model):
+    class meta:
+        db_table = 'analysis'
+
+    goal = models.ForeignKey(Goal, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, null=True)
     date_created = models.DateField(auto_now_add=True)
     challenges = models.TextField(default="No challenge indicated")
