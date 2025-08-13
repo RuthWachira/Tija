@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<h1>
+    Goals
+</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Goal Name</th>
+            <th>Description</th>
+            <th>Date created</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for goal in goals %}
+        <tr>
+            <td>{{goal.name}} </td>
+            <td>{{goal.description}} </td>
+            <td>{{goal.date_created}} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+</table>
+
+
+
+
+
+</html>
