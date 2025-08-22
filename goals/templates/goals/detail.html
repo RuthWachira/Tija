@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>{{goal.name}}</h3>
+
+<table class="table table-hover table-bordered">
+    <tr>
+        <td>Date Created</td>
+        <td>{{goal.date_created}} </td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>{{goal.description}} </td>
+    </tr>
+    <tr>
+        <td>Priority</td>
+        <td>{{goal.priority}} </td>
+    </tr>
+    <tr>
+        <td>Timeframe</td>
+        <td>{{goal.timeframe}} </td>
+    </tr>
+    <tr>
+        <td>Planned Completion Date</td>
+        <td>{{goal.planned_completion_date}} </td>
+    </tr>
+    <tr>
+        <td>Start Date</td>
+        <td>{{goal.start_date}} </td>
+    </tr>
+    <tr>
+        <td>Completion Date</td>
+        <td>{{goal.completion_date}} </td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td>{{goal.status}} </td>
+    </tr>
+</table>
+
+{% endblock %}

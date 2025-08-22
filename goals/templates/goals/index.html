@@ -12,7 +12,9 @@
     <tbody>
         {% for goal in goals %}
         <tr>
-            <td>>{{goal.name}} </td>
+            <td> 
+                <a href={% url 'goals:detail' goal.id %}>{{goal.name}}</a> 
+            </td>
             <td>{{goal.description}} </td>
             <td>{{goal.date_created}} </td>
         </tr>
