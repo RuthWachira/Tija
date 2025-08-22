@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<h1>
-    Goals
-</h1>
+{% extends "base.html" %}
 
-<table>
+{% block content %}
+<table class="table table-hover table-bordered goals-table">
     <thead>
         <tr>
             <th>Goal Name</th>
@@ -15,7 +12,7 @@
     <tbody>
         {% for goal in goals %}
         <tr>
-            <td>{{goal.name}} </td>
+            <td>>{{goal.name}} </td>
             <td>{{goal.description}} </td>
             <td>{{goal.date_created}} </td>
         </tr>
@@ -24,9 +21,4 @@
 
 
 </table>
-
-
-
-
-
-</html>
+{% endblock %}
