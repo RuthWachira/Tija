@@ -1,6 +1,7 @@
 from . import views  # manually imported by me
 from django.urls import path  # manually imported by me
 
+
 app_name = 'goals'
 
 urlpatterns = [

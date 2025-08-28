@@ -18,9 +18,13 @@ from django.contrib import admin  # preimported by django
 from django.urls import path, include
 # path was preimported by django, I however added the 'include' function
 from . import views
+from api.models import GoalResource
+
+goal_resource = GoalResource()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('goals/', include('goals.urls')),
-    path('', views.home)
+    path('', views.home),
+    path('api/', include(goal_resource.urls))
 ]
