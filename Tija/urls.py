@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin  # preimported by django
 from django.urls import path, include
 # path was preimported by django, I however added the 'include' function
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('goals/', include('goals.urls'))
+    path('goals/', include('goals.urls')),
+    path('', views.home)
 ]
