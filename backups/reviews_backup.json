@@ -1,0 +1,26 @@
+[
+{
+  "model": "goals.review",
+  "pk": 1,
+  "fields": {
+    "goal": 1,
+    "title": "Model creation",
+    "date_created": "2025-07-31",
+    "challenges": "-Refined the models too many times initially which led in errors during second migration",
+    "lessons": "-There needs to be good preparation prior to starting your project regarding to the database schema design",
+    "proposed_action": "-Design your models and database schema early before production for future projects"
+  }
+},
+{
+  "model": "goals.review",
+  "pk": 3,
+  "fields": {
+    "goal": 1,
+    "title": "App layout",
+    "date_created": "2025-08-13",
+    "challenges": "Figuring out the layouts and pages needed in the app",
+    "lessons": "-Sketch layouts during the app design phase, such that execution is seamless \r\n-I need more knowledge on the overall app architectural design process",
+    "proposed_action": "-Seek tutorials on a general app structure and on layout design"
+  }
+}
+]

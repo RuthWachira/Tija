@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404  # preimported by django
 from django.http import HttpResponse  # manually imported by me
-from .models import Goal
+from .models import Goal  # manually imported by me
 # Create your views here.
 
 

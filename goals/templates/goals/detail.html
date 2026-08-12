@@ -6,19 +6,23 @@
 <table class="table table-hover table-bordered">
     <tr>
         <td>Date Created</td>
-        <td>{{goal.date_created}} </td>
+        <td>{{goal.created_at}} </td>
     </tr>
     <tr>
         <td>Description</td>
         <td>{{goal.description}} </td>
     </tr>
     <tr>
-        <td>Priority</td>
-        <td>{{goal.priority}} </td>
+        <td>Urgency</td>
+        <td>{{goal.get_urgency_display}} </td>
+    </tr>
+    <tr>
+        <td>Importance</td>
+        <td>{{goal.get_importance_display}} </td>
     </tr>
     <tr>
         <td>Timeframe</td>
-        <td>{{goal.timeframe}} </td>
+        <td>{{goal.get_timeframe_display}} </td>
     </tr>
     <tr>
         <td>Planned Completion Date</td>
@@ -26,15 +30,19 @@
     </tr>
     <tr>
         <td>Start Date</td>
-        <td>{{goal.start_date}} </td>
+        <td>{{goal.started_at}} </td>
     </tr>
     <tr>
         <td>Completion Date</td>
-        <td>{{goal.completion_date}} </td>
+        <td>{{goal.completed_at}} </td>
     </tr>
     <tr>
         <td>Status</td>
-        <td>{{goal.status}} </td>
+        <td>{{goal.get_status_display}} </td>
+    </tr>
+    <tr>
+        <td>Category</td>
+        <td>{{goal.get_category_display}} </td>
     </tr>
 </table>
 
