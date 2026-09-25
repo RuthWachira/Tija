@@ -1,24 +1,27 @@
 # Tija - A productivity app
-Tija is a web application built on Django framework. It is productivity app that aims to track the efficiency your daily productive activities such as work, learning etc.
-It also tracks progress of your long-term and short-term goals.
+Tija is a web application built on Django framework. It is a productivity app that records your long-term and short-term goals spanning across several spheres of life such as career, health, learning, finances etc. It allows you to follow through your goals from creation to completion/abandonment. Tija provides a platform to record little to big successes realised in the achievement of your goals. You also get to record the challenges encountered and their remediation process. 
+
 
 ![Tija illustration banner](https://hgs.cx/wp-content/uploads/2022/11/AgentX-productivity-P2-blog-banner.webp)
 
 ## Features 🎯
-1. **Goal tracking**: For setting long-term and short-term goals.
-2. **Engaged time**: Records actual start and stops of productive work/activity hours.
-3. **Breaks and recharge**: Tracks breaks and recharge time taken.
-4. **Sleep hygiene monitor**: Tracks daily sleep hours.
-5. **Reporting**: Reports on the daily productivity scale, indicating the impact therein of the other key metrics affecting productivity such as sleep and recharge time.
-In the long term, daily habits over time are used to report on  Goal achievement, prediction of a goal being achieved based on target set and actual daily habits to date.
-6. **Notification center** (upcoming feature): provide reminders and notifications based on specific targets set by user e.g an alert on desired start time for work hours, alert on desired sleep time.
+1. **Goal tracking**: Alows user to set long-term and short-term goals, with specific goal metrics such as category, urgency, and importance. It also tracks progression of the goal, from creation stage to completion/abandonment.
+2. **Record wins**: Records specific successes realised in the process of executing a goal, without  limiting it to only completed goals.
+3. **Record challenges**: A clear record of challenges faced while executing a goal. Includes remediability of the challenge.
+4. **Remediation**: Follows through on the resolution of challenges faced in the execution of the goals.
+
+## Upcoming Features 🎯🎯
+1. **Notification center**: Provide reminders and notifications based on specific targets set by the user e.g an alert on an upcoming target completion date for a goal, alert on a stale remediation that has been long standing.
+2. **Reporting**:Graphical representation on goal progression, trend reports , patterns and predictions based on current goals.
+
+
 
 ## Tech stack
 - **Backend** : Python (Django)
-- **Frontend** : HTML, CSS(Bootstrap) 
-- **Database** : MySQL
-- **Deployment** : Heroku
-- **Version control** : Git
+- **Frontend** : Django templates, CSS(Bootstrap) 
+- **Database** : SQLite
+- **Deployment** : TBD
+- **Version control** : Github
 - **API** : Django REST framework
 
 ## Installation
