@@ -7,12 +7,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required # login_required > for FBVs
 
 # Create your views here.
 
 # OLD VIEWS BELOW
-
 
 def index(request):
     # return HttpResponse("Howdy! howdy! howdy to you!. Welcome aboard and set a GOAL")   #initial view before updating it to display goal names
