@@ -8,6 +8,7 @@ django = "*"
 django-tastypie = "*"
 
 [dev-packages]
+pylint = "*"
+pylint-django = "*"
 
 [requires]
-

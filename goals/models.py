@@ -216,7 +216,7 @@ class Goal(models.Model):
         # 5. Clean remediation before completing goals- a goal cannot be marked completed before all it's challenge remediations are remediated.
         if self.status == self.StatusChoices.COMPLETED:
             if self.pk:
-                pending_remediations = ChallengeRemediation.objects.filter(  # pylint: disable=no-member
+                pending_remediations = ChallengeRemediation.objects.filter(
                     challenge__goal=self, remediated_at__isnull=True).count()
                 if pending_remediations > 0:
                     errors['status'].append(
@@ -243,7 +243,7 @@ class Goal(models.Model):
         if self.status == self.StatusChoices.ABANDONED and self.abandoned_at:
             if self.pk:
                 # Check for unresolved remediations on challenges created BEFORE abandonment
-                unresolved_old_remediations = ChallengeRemediation.objects.filter(  # pylint: disable=no-member
+                unresolved_old_remediations = ChallengeRemediation.objects.filter(
                     challenge__goal=self,
                     challenge__created_at__lt=self.abandoned_at,
                     remediated_at__isnull=True).count()
@@ -334,9 +334,6 @@ class Goal(models.Model):
         if commit:
             self.save()
 
-    # Added the below line to remove error in views.py regarding Goal not having an objects member under>> Goal.objects.all()
-    objects = models.Manager()
-
 
 class Challenge(models.Model):
     """
@@ -406,29 +403,29 @@ class Challenge(models.Model):
         # 1. a)Clean what should happen when a challenge is created after a goal is abandoned or completed.
         if hasattr(self, 'goal') and self.goal:
             parent_goal = self.goal
-            #THe reference_time variable below ensures that we cater for both a challenge that exists(has already been saved to database, 
+            # THe reference_time variable below ensures that we cater for both a challenge that exists(has already been saved to database,
             # and has a created_at value), as well as a new unsaved challenge(without pk and therefore without created_at value).
-            
+
             reference_time = self.created_at if self.pk and self.created_at else timezone.now()
 
             # NEW challenges (created AFTER abandonment/completion) cannot be "remediable_currently"
-            if parent_goal.status == parent_goal.StatusChoices.ABANDONED:  # pylint: disable=no-member
-                if reference_time > parent_goal.abandoned_at:  # pylint: disable=no-member
+            if parent_goal.status == parent_goal.StatusChoices.ABANDONED:
+                if reference_time > parent_goal.abandoned_at:
                     if self.remediability == self.RemediabilityChoices.REMEDIABLE_CURRENTLY:
                         errors['remediability'].append(
                             'A new challenge for an abandoned goal cannot be remediable currently. Update remediability')
 
-            if parent_goal.status == parent_goal.StatusChoices.COMPLETED:  # pylint: disable=no-member
-                if reference_time > parent_goal.completed_at:  # pylint: disable=no-member
+            if parent_goal.status == parent_goal.StatusChoices.COMPLETED:
+                if reference_time > parent_goal.completed_at:
                     if self.remediability == self.RemediabilityChoices.REMEDIABLE_CURRENTLY:
                         errors['remediability'].append(
                             'A new challenge for a completed goal cannot be remediable currently. Update remediability')
 
             # b) OLD challenges (created BEFORE abandonment) can stay "remediable_currently" ONLY if all remediations are resolved
-            if parent_goal.status == parent_goal.StatusChoices.ABANDONED and self.pk:   # pylint: disable=no-member
-                if self.created_at and self.created_at < parent_goal.abandoned_at:   # pylint: disable=no-member
+            if parent_goal.status == parent_goal.StatusChoices.ABANDONED and self.pk:
+                if self.created_at and self.created_at < parent_goal.abandoned_at:
                     if self.remediability == self.RemediabilityChoices.REMEDIABLE_CURRENTLY:
-                        unresolved = self.challenge_remediations.filter(   # pylint: disable=no-member
+                        unresolved = self.challenge_remediations.filter(
                             remediated_at__isnull=True).count()
                         if unresolved > 0:
                             errors['remediability'].append(
@@ -556,12 +553,12 @@ class ChallengeRemediation(models.Model):
 
         if hasattr(self, 'challenge') and self.challenge:
             # a) Clean that no challenge remediations should be added for challenges that are not remediable currently(This is an additional guardrail in addition to the use of limit_choices_to used in the challenge field, which works on limiting the choices in the form UI only.)
-            if self.challenge.remediability != self.challenge.RemediabilityChoices.REMEDIABLE_CURRENTLY:  # pylint: disable=no-member
+            if self.challenge.remediability != self.challenge.RemediabilityChoices.REMEDIABLE_CURRENTLY:
                 errors['challenge'].append(
                     'You can only add a challenge remediation if its challenge remediability is set to remediable currently')
 
         # b) Clean that no new challenge remediations should be added for challenges associated with goals that are abandoned or completed
-            parent_goal = self.challenge.goal  # pylint: disable=no-member
+            parent_goal = self.challenge.goal
 
             # This ensures that we only block the new remediations(raised after completion/abandonment)
             if not self.pk:
